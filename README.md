@@ -3,6 +3,11 @@
 A full-stack web application for managing hackathon registrations, built as part of the SMP Web Nominee Assignment 2026-27.
 
 ---
+## Live Demo
+- Frontend: [https://your-production-vercel-url](https://innovate-fest-amber.vercel.app/)
+- Backend: [https://your-render-url](https://innovatefest.onrender.com)
+
+---
 
 ## Tech Stack & Architecture
 
@@ -129,10 +134,12 @@ git clone <your-repo-url>
 cd innovatefest
 ```
 
-### 2. Set up the database
+### 2. Database (Production)
+The production database is hosted on Render. Schema is already applied.
+### OR
+### Database (Local)
 ```bash
 createdb innovatefest
-cd backend
 psql -d innovatefest -f src/db/schema.sql
 ```
 
