@@ -170,6 +170,13 @@ Frontend runs on http://localhost:5173
 
 ---
 
+## Improvements that could be done on the assignment/ hackathon portal
+- **Admin authentication** — protect /admin with JWT login. Currently the route is publicly accessible by URL.
+- **Pagination** — GET /api/registrations currently returns all rows. With thousands of registrations this needs LIMIT/OFFSET on the backend and page controls on the frontend.
+- **Email confirmation** — send an automated confirmation email to the participant after successful registration using Nodemailer.
+
+---
+
 ## Q2 — Initiative Proposal
 
 ### 1. Department Alumni Experience Section Revamp
