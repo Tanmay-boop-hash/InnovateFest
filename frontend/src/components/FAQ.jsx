@@ -17,7 +17,7 @@ function FAQ() {
 
   return (
     <section style={styles.section}>
-      <h2 style={styles.heading}>Frequently Asked Questions</h2>
+      <h2 style={styles.heading}>Frequently Asked Questions (FAQs)</h2>
       <div style={styles.list}>
         {faqs.map((faq, index) => (
           <div key={index} style={styles.item}>

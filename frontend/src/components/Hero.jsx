@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import Typewriter from 'typewriter-effect'
 
 function Hero() {
   const navigate = useNavigate()
@@ -14,16 +15,31 @@ function Hero() {
       <div style={styles.content}>
         <p style={styles.tag}>48 Hours. Infinite Ideas.</p>
         <h1 style={styles.title}>
-          Welcome to<br />
-          <span style={styles.highlight}>InnovateFest</span>
+            Welcome to{' '}
+            <span style={styles.highlight}>
+                <Typewriter
+                options={{
+                    strings: ['InnovateFest', 'the Future of Tech', 'code. build. ship.'],
+                    autoStart: true,
+                    loop: true,
+                    delay: 75,
+                }}
+                />
+            </span>
         </h1>
         <p style={styles.subtitle}>
           A flagship weekend hackathon where students build, break, and ship real products.
           Join hundreds of developers, designers, and problem solvers.
         </p>
         <button style={styles.button} onClick={() => navigate('/register')}>
-          Register Now →
-        </button>
+            Register Now →
+            </button>
+
+            <div style={styles.statsRow}>
+            <div style={styles.statPill}>🧑‍💻 500+ Participants</div>
+            <div style={styles.statPill}>🏆 ₹2L+ in Prizes</div>
+            <div style={styles.statPill}>📅 48 Hours</div>
+            </div>
       </div>
     </section>
   )
@@ -37,7 +53,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
-    padding: '6rem 2rem 4rem',
+    padding: '2rem 2rem 4rem',
     backgroundColor: '#0a0a0a',
     position: 'relative',
     overflow: 'hidden',
@@ -80,11 +96,16 @@ const styles = {
     alignItems: 'center',
   },
   tag: {
-    color: '#a78bfa',
-    fontWeight: '600',
-    letterSpacing: '0.1em',
-    marginBottom: '1rem',
-    fontSize: '0.95rem',
+  color: '#a78bfa',
+  fontWeight: '700',
+  letterSpacing: '0.15em',
+  marginBottom: '1.5rem',
+  fontSize: '1.1rem',
+  textTransform: 'uppercase',
+  border: '1px solid #7c3aed44',
+  padding: '0.4rem 1.2rem',
+  borderRadius: '20px',
+  backgroundColor: '#7c3aed11',
   },
   title: {
     fontSize: 'clamp(2.5rem, 8vw, 5rem)',
@@ -93,9 +114,10 @@ const styles = {
     marginBottom: '1.5rem',
   },
   highlight: {
-    background: 'linear-gradient(135deg, #7c3aed, #2563eb)',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
+  background: 'linear-gradient(135deg, #7c3aed, #2563eb)',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  display: 'inline-block',
   },
   subtitle: {
     maxWidth: '600px',
@@ -113,7 +135,22 @@ const styles = {
     fontSize: '1rem',
     fontWeight: '600',
     cursor: 'pointer',
-  }
+  },
+  statsRow: {
+  display: 'flex',
+  gap: '1rem',
+  marginTop: '2rem',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
+},
+statPill: {
+  padding: '0.5rem 1rem',
+  backgroundColor: '#ffffff08',
+  border: '1px solid #ffffff15',
+  borderRadius: '20px',
+  fontSize: '0.85rem',
+  color: '#aaa',
+},
 }
 
 export default Hero

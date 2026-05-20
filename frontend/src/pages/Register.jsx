@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import ReactConfetti from 'react-confetti'
 
 const SKILLS_OPTIONS = [
   'React', 'Node.js', 'Python', 'Machine Learning', 'UI/UX Design',
@@ -34,8 +35,8 @@ function Register() {
     if (formData.skills.length === 0) newErrors.skills = 'Select at least one skill'
     if (!formData.motivation.trim()) {
       newErrors.motivation = 'Motivation statement is required'
-    } else if (formData.motivation.length > 500) {
-      newErrors.motivation = 'Must be under 500 characters'
+    } else if (formData.motivation.length > 300) {
+      newErrors.motivation = 'Must be under 300 characters'
     }
     return newErrors
   }
@@ -81,20 +82,29 @@ function Register() {
   }
 
   if (success) {
-    return (
-      <div style={styles.successWrapper}>
-        <div style={styles.successBox}>
-          <div style={styles.checkmark}>✓</div>
-          <h2 style={styles.successTitle}>You're registered!</h2>
-          <p style={styles.successText}>We'll be in touch with further details. See you at InnovateFest.</p>
-        </div>
+  return (
+    <div style={styles.successWrapper}>
+      <ReactConfetti
+        width={window.innerWidth}
+        height={window.innerHeight}
+        recycle={false}
+        numberOfPieces={300}
+      />
+      <div style={styles.successBox}>
+        <div style={styles.checkmark}>✓</div>
+        <h2 style={styles.successTitle}>You're registered!</h2>
+        <p style={styles.successText}>We'll be in touch with further details. See you at InnovateFest.</p>
       </div>
-    )
-  }
+    </div>
+  )
+}
 
   return (
     <div style={styles.wrapper}>
       <div style={styles.container}>
+        <div style={styles.banner}>
+            🚀 Applications are open — limited spots available
+        </div>
         <h1 style={styles.title}>Register for InnovateFest</h1>
         <p style={styles.subtitle}>Fill in your details to secure your spot.</p>
 
@@ -115,7 +125,7 @@ function Register() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="College mail id"
+              placeholder="email"
               style={inputStyle(errors.email)}
             />
           </Field>
@@ -160,16 +170,16 @@ function Register() {
           </Field>
 
           <Field
-            label={`Motivation Statement (${formData.motivation.length}/500)`}
+            label={`Motivation Statement (${formData.motivation.length}/300)`}
             error={errors.motivation}
           >
             <textarea
               name="motivation"
               value={formData.motivation}
               onChange={handleChange}
-              placeholder="Why do you want to participate? What do you hope to build?"
+              placeholder="Why do you want to participate? What do you hope to build and learn?"
               rows={4}
-              style={{ ...inputStyle(errors.motivation), resize: 'vertical' }}
+              style={{ ...inputStyle(errors.motivation), height: 'auto', resize: 'vertical' }}
             />
           </Field>
 
@@ -200,14 +210,15 @@ function Field({ label, error, children }) {
 
 const inputStyle = (error) => ({
   width: '100%',
-  padding: '0.75rem 1rem',
+  padding: '0.85rem 1rem',
   backgroundColor: '#111',
-  border: `1px solid ${error ? '#ef4444' : '#333'}`,
-  borderRadius: '6px',
+  border: `1px solid ${error ? '#ef4444' : '#2a2a2a'}`,
+  borderRadius: '8px',
   color: '#fff',
   fontSize: '1rem',
   outline: 'none',
   boxSizing: 'border-box',
+  height: '52px',
 })
 
 const skillBtnStyle = (selected) => ({
@@ -308,7 +319,17 @@ const styles = {
   successText: {
     color: '#aaa',
     fontSize: '1.05rem',
-  }
+  },
+  banner: {
+  backgroundColor: '#7c3aed22',
+  border: '1px solid #7c3aed44',
+  borderRadius: '8px',
+  padding: '0.6rem 1rem',
+  color: '#a78bfa',
+  fontSize: '1 rem',
+  textAlign: 'center',
+  marginBottom: '2rem',
+},
 }
 
 export default Register
