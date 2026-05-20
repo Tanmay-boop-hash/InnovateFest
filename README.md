@@ -130,8 +130,8 @@ For thousands of registrations and multiple concurrent admins:
 
 ### 1. Clone the repository
 ```bash
-git clone <your-repo-url>
-cd innovatefest
+git clone <https://github.com/Tanmay-boop-hash/InnovateFest.git>
+cd InnovateFest
 ```
 
 ### 2. Database (Production)
@@ -172,17 +172,19 @@ Frontend runs on http://localhost:5173
 
 ## Q2 — Initiative Proposal
 
-### Peer Mentorship Matching Portal
+### 1. Department Alumni Experience Section Revamp
+Audit and update the department experience sections across all department specific blogs on the SMP website. The current entries feature experiences from pre-COVID batches, which are significantly outdated given major curriculum changes that may have happened in various departments post-COVID. The initiative involves coordinating with SMPCs and DAMPCs to collect structured experience writeups from recent graduates (2023-2025 passouts) and updating the website to reflect current curriculum reality.
+**Problem it solves**: Freshers rely on these pages to understand what their department journey looks like — course difficulty, research opportunities, internship culture. Pre-COVID experiences are outdated because course structures, grading patterns, and opportunities have changed substantially. Outdated content actively gives wrong guidance to students making real academic decisions. Also apart from just updating the content, we can improve the structure of how it's displayed. We can display experiences as cards with the person's name, batch year, maybe even where he/she got placed. This adds credibility (readers know how recent it is) and makes the page scannable instead of a wall of text. Also add a "Last Updated" timestamp on each department page so it's always clear how fresh the content is.
+**Implementation approach**: Coordinate with SMPCs and DAMPCs to collect 2-3 alumni experience writeups per department from recent batches using a standardized Google Form to keep formatting consistent. Then we can restructure the experience section as a component that renders from a JSON or database entry rather than hardcoded HTML, making future updates a one-line data change instead of editing raw HTML every time. This also sets the foundation for the Unified DAMP Blog platform that is already planned for this tenure.
 
-**What:** A web platform where juniors fill out a form listing their interests, goals, and areas they want guidance in. SMP matches them with senior student mentors based on those inputs. Both parties can view their match and access a simple messaging or scheduling interface.
+### 2. Fresher Performance Analytics Dashboard
+The MIS portal aims to analyze fresher performance and help mentors track engagement. We can build the analytics layer specifically for better visualisation and a modern and clean look. A dashboard that aggregates fresher activity data — attendance, performance summary, peer review scores and presents it visually to mentors with trend graphs and alert flags for students needing attention.
+**Implementation**: Backend aggregation queries in PostgreSQL using GROUP BY and window functions. Frontend charts using Recharts (library available in React). 
 
-**Problem it solves:** Currently mentorship at SMP happens informally — juniors reach out randomly or not at all. Many students who need guidance don't know who to approach, and many seniors willing to help have no structured way to offer it.
+### 3. Minor implementations in the projects that we would be working on during our tenure.
+- One thing I thought to add was search and filter layers in the Unified DAMP Blog platform so that it makes it easy finding a review of course/elective through their codes more easy and accessible, as finding good electives is a big hassle during registration period.
+- Dark mode theme implementation on the SMP website could be a thing to implement (given that it is allowed and not done yet due to being missed out on).
+Thats all from my side for now. Will try to think of more initiatives during the tenure (if I become web nom :)
+Thank you!
 
-**Benefit to SMP and students:** Increases the actual impact of SMP's mentorship mission beyond events. Juniors get targeted guidance. Seniors build leadership experience. SMP gets a concrete, trackable output from its mentorship vertical.
-
-**Implementation approach:**
-- Two registration flows — mentor and mentee — each with a profile form
-- A simple matching algorithm based on shared tags (branch, interests, career goals)
-- Admin view to review and confirm matches
-- Email notification when a match is made
-- Built on the same stack as this project — Node.js backend, PostgreSQL, React frontend
+---
