@@ -68,7 +68,7 @@ function Register() {
 
     setLoading(true)
     try {
-      await axios.post('http://localhost:3000/api/registrations', {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/registrations`, {
         ...formData,
         year_of_study: parseInt(formData.year_of_study)
       })

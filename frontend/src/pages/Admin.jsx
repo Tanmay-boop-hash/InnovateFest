@@ -12,7 +12,7 @@ function Admin() {
 
   const fetchRegistrations = async () => {
     try {
-      const res = await axios.get('http://localhost:3000/api/registrations')
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/registrations`)
       setRegistrations(res.data.registrations)
     } catch (err) {
       setError('Failed to fetch registrations')
@@ -28,7 +28,7 @@ function Admin() {
   const handleDelete = async (id) => {
     if (!window.confirm('Delete this registration?')) return
     try {
-      await axios.delete(`http://localhost:3000/api/registrations/${id}`)
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/registrations/${id}`)
       setRegistrations(prev => prev.filter(r => r.id !== id))
     } catch (err) {
       alert('Failed to delete')
